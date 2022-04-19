@@ -8,12 +8,17 @@ import { Footer } from '../components/Footer'
 
 const SecondPage = () => {
 
+  const router = useRouter()
   const { t } = useTranslation('second-page')
 
   return (
     <>
       <main>
         <Header heading={t('h1')} title={t('title')} />
+        <pre>
+          router.asPath: {router.asPath}<br/>
+          router.pathname: {router.pathname}
+        </pre>
         <Link href='/'>
           <button
             type='button'
@@ -27,7 +32,7 @@ const SecondPage = () => {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...await serverSideTranslations(locale, ['second-page', 'footer']),
   },

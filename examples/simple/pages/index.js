@@ -16,6 +16,10 @@ const Homepage = () => {
     <>
       <main>
         <Header heading={t('h1')} title={t('title')} />
+        <pre>
+          router.asPath: {router.asPath}<br/>
+          router.pathname: {router.pathname}
+        </pre>
         <div>
           <Link
             href='/'
@@ -39,7 +43,7 @@ const Homepage = () => {
   )
 }
 
-export const getStaticProps = async ({ locale }) => ({
+export const getServerSideProps = async ({ locale }) => ({
   props: {
     ...await serverSideTranslations(locale, ['common', 'footer']),
   },
